@@ -9,9 +9,9 @@ namespace Core.CrossCuttingConcerns.Exceptions
 {
     public static class ExecptionMiddlewareExtensions
     {
-        public static IApplicationBuilder UseCustomExcepitonMiddleware(this IApplicationBuilder application)
+        public static void UseCustomExcepitonMiddleware(this IApplicationBuilder application)
         {
-           return application.UseMiddleware<ExceptionMiddleware>();
+            application.UseMiddleware<ExceptionMiddleware>();
         }
     }
 }
