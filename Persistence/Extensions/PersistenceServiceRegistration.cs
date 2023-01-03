@@ -21,6 +21,7 @@ namespace Persistence.Extensions
                 opt.UseSqlServer(configuration.GetConnectionString("SqlCon"));
             });
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             return services;
 
         }

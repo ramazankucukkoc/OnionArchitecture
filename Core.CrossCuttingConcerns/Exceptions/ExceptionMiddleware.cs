@@ -39,8 +39,6 @@ namespace Core.CrossCuttingConcerns.Exceptions
             if (exception.GetType() == typeof(NotFoundExcepiton))
                 return CreateNotFoundException(context, exception);
             return CreateInternalServerException(context, exception);
-           
-
         }
         private Task CreateNotFoundException(HttpContext context, Exception exception)
         {

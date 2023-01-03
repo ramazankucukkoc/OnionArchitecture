@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Core.Persistence.Entities;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -15,6 +16,8 @@ namespace Persistence.Contexts
         protected IConfiguration Configuration { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Log> Logs { get; set; }
+        
 
         public BaseDbContext(IConfiguration configuration,DbContextOptions dbContextOptions):base(dbContextOptions)
         {

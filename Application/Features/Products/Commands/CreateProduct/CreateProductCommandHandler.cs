@@ -2,6 +2,8 @@
 using Application.Features.Products.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.CrossCuttingConcerns.Logging.Serilog;
+using Core.CrossCuttingConcerns.Logging.Serilog.Logger;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -18,15 +20,18 @@ namespace Application.Features.Products.Commands.CreateProduct
         private readonly IMapper _mapper;
         private readonly ProductBusinessRules _productBusinessRules;
 
-        public CreateProductCommandHandler(IProductRepository productRepository, IMapper mapper, ProductBusinessRules productBusinessRules)
+        public CreateProductCommandHandler(IProductRepository productRepository, IMapper mapper,
+            ProductBusinessRules productBusinessRules)
         {
             _productRepository = productRepository;
             _mapper = mapper;
             _productBusinessRules = productBusinessRules;
+            
         }
 
         public async Task<CreateProductDto> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
+            //_logger.Debug("İşelmeler");
             //iş kuralı bu satırı geçemezse hata fırlatılacak.
             await _productBusinessRules.ProductNameCanNotDuplicatedWhenInserted(request.Name);
 

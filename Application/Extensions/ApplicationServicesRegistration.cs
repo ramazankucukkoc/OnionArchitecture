@@ -1,6 +1,10 @@
-﻿using Application.Features.Products.Profiles;
+﻿using Application.Features.Categories.Rules;
+using Application.Features.Products.Profiles;
 using Application.Features.Products.Rules;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Validation;
+using Core.CrossCuttingConcerns.Logging.Serilog;
+using Core.CrossCuttingConcerns.Logging.Serilog.Logger;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,10 +25,15 @@ namespace Application.Extensions
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped<ProductBusinessRules>();
+            services.AddScoped<CategoryBusinessRules>();
+            //services.AddScoped<MsSqlLogger>();
 
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>),typeof(RequestValidationBehavior<,>));
+            //services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            //services.AddTransient(typeof(IPipelineBehavior<,>),typeof(RequestValidationBehavior<,>));
+            //services.AddTransient(typeof(IPipelineBehavior<,>),typeof(LogginBehavior<,>));
 
+            //services.AddSingleton<LoggerServiceBase, MsSqlLogger>();
+           // services.AddSingleton<LoggerServiceBase, FileLogger>();
 
             return services;
         }
