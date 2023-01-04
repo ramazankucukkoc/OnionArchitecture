@@ -1,5 +1,8 @@
 ﻿using Application.Features.Categories.Commands.CreateCategory;
 using Application.Features.Categories.Dtos;
+using Application.Features.Categories.Models;
+using Application.Features.Categories.Queries.GetListCategory;
+using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +27,14 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateCategoryCommand updateCategoryCommand )
         {
             UpdateCategoryDto result = await Mediator.Send(updateCategoryCommand);
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+        {
+
+            GetListCategoryQuery getListCategory = new() { PageRequest= pageRequest };
+            CategoryListModel result = await Mediator.Send(getListCategory);
             return Ok(result);
         }
 

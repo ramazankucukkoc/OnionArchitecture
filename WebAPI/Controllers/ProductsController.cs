@@ -11,6 +11,8 @@ namespace WebAPI.Controllers
 {
     public class ProductsController : BaseController
     {
+
+
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateProductCommand createProductCommand)
         {

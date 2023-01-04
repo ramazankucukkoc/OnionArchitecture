@@ -1,6 +1,8 @@
 ﻿using Application.Features.Categories.Commands.CreateCategory;
 using Application.Features.Categories.Dtos;
+using Application.Features.Categories.Models;
 using AutoMapper;
+using Core.Persistence.Paging;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,10 @@ namespace Application.Features.Categories.Profiles
             //Command Mappings Updates
             CreateMap<Category, UpdateCategoryCommand>().ReverseMap();
             CreateMap<Category, UpdateCategoryDto>().ReverseMap();
+
+            CreateMap<IPaginate<Category>, CategoryListModel>().ReverseMap();
+            CreateMap<CategoryListDto, CategoryListModel>().ReverseMap();
+            CreateMap<CategoryListDto, Category>().ReverseMap();
 
             //Queries Mappings
 

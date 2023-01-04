@@ -29,11 +29,10 @@ namespace Core.CrossCuttingConcerns.Logging.Serilog.Logger
             columnOpts.Store.Remove(StandardColumn.Message);
             columnOpts.Store.Remove(StandardColumn.Properties);
 
-            var seriLogConfig = new LoggerConfiguration()
+            Logger  = new LoggerConfiguration()
                 .WriteTo.MSSqlServer(connectionString: msSqlConfiguration.ConnectionString,
                 sinkOptions: sinksOpts, columnOptions: columnOpts)
                 .CreateLogger();
-            Logger = seriLogConfig;
                 
         }
     }
