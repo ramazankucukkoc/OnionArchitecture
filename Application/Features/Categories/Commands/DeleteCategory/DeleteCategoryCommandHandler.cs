@@ -31,7 +31,8 @@ namespace Application.Features.Categories.Commands.DeleteCategory
         {            
             await _categoryBusinessRules.CategoryShouldExistsWhenRequested(request.Id);
 
-            Category? category = await _categoryRepository.GetAsync(c => c.Id == request.Id);      
+            Category? category = await _categoryRepository.GetAsync(c => c.Id == request.Id);
+            
             Category deletedCategory = await _categoryRepository.DeleteAsync(category);
 
             DeleteCategoryDto createdCategoryDto =_mapper.Map<DeleteCategoryDto>(deletedCategory);

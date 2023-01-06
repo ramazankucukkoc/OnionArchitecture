@@ -26,9 +26,12 @@ namespace Application.Features.Categories.Profiles
             CreateMap<Category, UpdateCategoryCommand>().ReverseMap();
             CreateMap<Category, UpdateCategoryDto>().ReverseMap();
 
+
             CreateMap<IPaginate<Category>, CategoryListModel>().ReverseMap();
             CreateMap<CategoryListDto, CategoryListModel>().ReverseMap();
             CreateMap<CategoryListDto, Category>().ReverseMap();
+
+            CreateMap<Category, CategoryGetByIdDto>().ReverseMap();
 
             //Queries Mappings
 

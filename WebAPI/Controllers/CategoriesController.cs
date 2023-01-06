@@ -1,6 +1,7 @@
 ﻿using Application.Features.Categories.Commands.CreateCategory;
 using Application.Features.Categories.Dtos;
 using Application.Features.Categories.Models;
+using Application.Features.Categories.Queries.GetByIdCategory;
 using Application.Features.Categories.Queries.GetListCategory;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -36,6 +37,12 @@ namespace WebAPI.Controllers
             GetListCategoryQuery getListCategory = new() { PageRequest= pageRequest };
             CategoryListModel result = await Mediator.Send(getListCategory);
             return Ok(result);
+        }
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetById([FromRoute]GetByIdCategoryQuery getByIdCategoryQuery)
+        {
+            CategoryGetByIdDto categoryGetById = await Mediator.Send(getByIdCategoryQuery);
+            return Ok(categoryGetById);
         }
 
     }

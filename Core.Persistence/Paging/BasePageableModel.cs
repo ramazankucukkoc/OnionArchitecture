@@ -14,5 +14,6 @@ namespace Core.Persistence.Paging
         public int Pages { get; set; }//Toplamda kaçtane sayfa var.
         public bool HasPrevious { get; set; }//Önceki dayfa var mı.
         public bool HasNext { get; set; }//Sonraki sayfa var mı.
+
     }
 }
