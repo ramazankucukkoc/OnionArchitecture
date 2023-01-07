@@ -4,15 +4,10 @@ using Application.Features.Categories.Models;
 using AutoMapper;
 using Core.Persistence.Paging;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Categories.Profiles
 {
-    public class CategoryProfile:Profile
+    public class CategoryProfile : Profile
     {
         public CategoryProfile()
         {

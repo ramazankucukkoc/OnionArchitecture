@@ -5,7 +5,6 @@ using Application.Features.Products.Models;
 using Application.Features.Products.Queries.GetByIdProduct;
 using Application.Features.Products.Queries.GetListProduct;
 using Core.Application.Requests;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -20,9 +19,9 @@ namespace WebAPI.Controllers
             CreateProductDto result = await Mediator.Send(createProductCommand);
             return Created("", result);
         }
-       
+
         [HttpPost]
-        public async Task<IActionResult> Delete([FromBody]DeleteProductCommand deleteProductCommand)
+        public async Task<IActionResult> Delete([FromBody] DeleteProductCommand deleteProductCommand)
         {
             DeleteProductDto result = await Mediator.Send(deleteProductCommand);
             return Ok(result);

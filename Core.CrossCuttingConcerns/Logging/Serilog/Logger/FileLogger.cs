@@ -2,15 +2,10 @@
 using Core.CrossCuttingConcerns.Logging.Serilog.Messages;
 using Microsoft.Extensions.Configuration;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.CrossCuttingConcerns.Logging.Serilog.Logger
 {
-    public class FileLogger:LoggerServiceBase
+    public class FileLogger : LoggerServiceBase
     {
         private IConfiguration _configuration;
 
@@ -18,7 +13,7 @@ namespace Core.CrossCuttingConcerns.Logging.Serilog.Logger
         {
             _configuration = configuration;
 
-            FileLogConfiguration logConfig = _configuration.GetSection("SeriLogConfigurations:FileConfiguration")
+            FileLogConfiguration logConfig = _configuration.GetSection("SeriLogConfigurations:FileLogConfiguration")
                 .Get<FileLogConfiguration>() ??
                 throw new Exception(SeriLogMessages.NullOptionsMessage);
 
@@ -30,7 +25,8 @@ namespace Core.CrossCuttingConcerns.Logging.Serilog.Logger
                 rollingInterval: RollingInterval.Day,
                 retainedFileCountLimit: null,
                 fileSizeLimitBytes: 5000000,
-               outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}").CreateLogger();
+               outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}")
+                .CreateLogger();
 
         }
     }

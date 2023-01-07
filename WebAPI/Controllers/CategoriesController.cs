@@ -4,7 +4,6 @@ using Application.Features.Categories.Models;
 using Application.Features.Categories.Queries.GetByIdCategory;
 using Application.Features.Categories.Queries.GetListCategory;
 using Core.Application.Requests;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
@@ -25,7 +24,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPost]
-        public async Task<IActionResult> Update([FromBody] UpdateCategoryCommand updateCategoryCommand )
+        public async Task<IActionResult> Update([FromBody] UpdateCategoryCommand updateCategoryCommand)
         {
             UpdateCategoryDto result = await Mediator.Send(updateCategoryCommand);
             return Ok(result);
@@ -33,13 +32,12 @@ namespace WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
-
-            GetListCategoryQuery getListCategory = new() { PageRequest= pageRequest };
+            GetListCategoryQuery getListCategory = new() { PageRequest = pageRequest };
             CategoryListModel result = await Mediator.Send(getListCategory);
             return Ok(result);
         }
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetById([FromRoute]GetByIdCategoryQuery getByIdCategoryQuery)
+        public async Task<IActionResult> GetById([FromRoute] GetByIdCategoryQuery getByIdCategoryQuery)
         {
             CategoryGetByIdDto categoryGetById = await Mediator.Send(getByIdCategoryQuery);
             return Ok(categoryGetById);

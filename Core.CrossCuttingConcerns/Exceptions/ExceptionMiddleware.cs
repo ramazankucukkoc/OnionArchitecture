@@ -1,12 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.CrossCuttingConcerns.Exceptions
 {
@@ -46,11 +41,11 @@ namespace Core.CrossCuttingConcerns.Exceptions
 
             return context.Response.WriteAsync(new NotFoundProblemDetails
             {
-                Status=StatusCodes.Status404NotFound,
-                Type= "https://example.com/probs/authorization",
-                Title="NotFound Exception",
-                Detail=exception.Message.ToString(),
-                Instance=""
+                Status = StatusCodes.Status404NotFound,
+                Type = "https://example.com/probs/authorization",
+                Title = "NotFound Exception",
+                Detail = exception.Message.ToString(),
+                Instance = ""
             }.ToString());
         }
         private Task CreateAuthorizationException(HttpContext context, Exception exception)
@@ -92,7 +87,7 @@ namespace Core.CrossCuttingConcerns.Exceptions
                 Instance = "",
             }.ToString());
         }
-        private Task CreateInternalServerException(HttpContext context ,Exception exception)
+        private Task CreateInternalServerException(HttpContext context, Exception exception)
         {
             context.Response.StatusCode = Convert.ToInt32(HttpStatusCode.InternalServerError);
 
@@ -102,8 +97,8 @@ namespace Core.CrossCuttingConcerns.Exceptions
                 Type = "https://example.com/probs/internal",
                 Title = "Internal Excepiton",
                 Detail = exception.Message.ToString(),
-                Instance=""
-            }.ToString()) ;
+                Instance = ""
+            }.ToString());
         }
     }
 }

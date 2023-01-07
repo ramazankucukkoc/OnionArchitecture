@@ -1,6 +1,7 @@
-﻿using Application.Features.Categories.Rules;
-using Application.Features.Products.Profiles;
+﻿using Application.Features.Auths.Rules;
+using Application.Features.Categories.Rules;
 using Application.Features.Products.Rules;
+using Application.Services.AuthService;
 using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Validation;
 using Core.CrossCuttingConcerns.Logging.Serilog;
@@ -8,12 +9,7 @@ using Core.CrossCuttingConcerns.Logging.Serilog.Logger;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Extensions
 {
@@ -26,15 +22,18 @@ namespace Application.Extensions
 
             services.AddScoped<ProductBusinessRules>();
             services.AddScoped<CategoryBusinessRules>();
-            //services.AddScoped<MsSqlLogger>();
+            services.AddScoped<AuthBusinessRules>();
+            
+            
+        //    services.AddScoped<FileLogger>();
 
-            //services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            //services.AddTransient(typeof(IPipelineBehavior<,>),typeof(RequestValidationBehavior<,>));
-            //services.AddTransient(typeof(IPipelineBehavior<,>),typeof(LogginBehavior<,>));
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
 
+            services.AddSingleton<LoggerServiceBase, FileLogger>();
             //services.AddSingleton<LoggerServiceBase, MsSqlLogger>();
-           // services.AddSingleton<LoggerServiceBase, FileLogger>();
-
+            services.AddScoped<IAuthService, AuthManager>();
             return services;
         }
     }

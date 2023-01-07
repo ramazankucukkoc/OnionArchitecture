@@ -4,11 +4,6 @@ using Application.Features.Products.Rules;
 using Application.Services.Repositories;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Products.Commands.UpdateProduct
 {
@@ -33,7 +28,7 @@ namespace Application.Features.Products.Commands.UpdateProduct
             product.CategoryId = request.CategoryId;
 
             Product updatedProduct = await _productRepository.UpdateAsync(product);
-            UpdateProductDto updateProductDto=LazyObjectMapper.Mapper.Map<UpdateProductDto>(updatedProduct);
+            UpdateProductDto updateProductDto = LazyObjectMapper.Mapper.Map<UpdateProductDto>(updatedProduct);
             return updateProductDto;
 
         }

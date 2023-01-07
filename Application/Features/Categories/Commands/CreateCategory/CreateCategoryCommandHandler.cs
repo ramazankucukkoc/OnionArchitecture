@@ -2,14 +2,8 @@
 using Application.Features.Categories.Profiles;
 using Application.Features.Categories.Rules;
 using Application.Services.Repositories;
-using AutoMapper;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Categories.Commands.CreateCategory
 {

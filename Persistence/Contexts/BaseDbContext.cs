@@ -1,25 +1,26 @@
 ﻿using Core.Persistence.Entities;
+using Core.Security.Entitites;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence.Contexts
 {
-    public class BaseDbContext:DbContext
+    public class BaseDbContext : DbContext
     {
         protected IConfiguration Configuration { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Log> Logs { get; set; }
-        
 
-        public BaseDbContext(IConfiguration configuration,DbContextOptions dbContextOptions):base(dbContextOptions)
+
+
+        public BaseDbContext(IConfiguration configuration, DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
             Configuration = configuration;
         }

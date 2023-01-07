@@ -3,15 +3,10 @@ using Core.CrossCuttingConcerns.Logging.Serilog.Messages;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Sinks.MSSqlServer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.CrossCuttingConcerns.Logging.Serilog.Logger
 {
-    public class MsSqlLogger:LoggerServiceBase
+    public class MsSqlLogger : LoggerServiceBase
     {
         private IConfiguration Configuration;
 
@@ -19,7 +14,7 @@ namespace Core.CrossCuttingConcerns.Logging.Serilog.Logger
         {
             Configuration = configuration;
 
-            MsSqlConfiguration msSqlConfiguration = configuration.GetSection("SeriLogConfigurations:MsSqlConfiguration")
+            MsSqlConfiguration msSqlConfiguration = Configuration.GetSection("SeriLogConfigurations:MsSqlConfiguration")
                 .Get<MsSqlConfiguration>() ??
                 throw new Exception(SeriLogMessages.NullOptionsMessage);
 
@@ -29,11 +24,12 @@ namespace Core.CrossCuttingConcerns.Logging.Serilog.Logger
             columnOpts.Store.Remove(StandardColumn.Message);
             columnOpts.Store.Remove(StandardColumn.Properties);
 
-            Logger  = new LoggerConfiguration()
+            Logger = new LoggerConfiguration()
                 .WriteTo.MSSqlServer(connectionString: msSqlConfiguration.ConnectionString,
                 sinkOptions: sinksOpts, columnOptions: columnOpts)
                 .CreateLogger();
-                
+
         }
     }
 }
+

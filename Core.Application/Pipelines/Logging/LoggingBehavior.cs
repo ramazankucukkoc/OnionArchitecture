@@ -3,22 +3,17 @@ using Core.CrossCuttingConcerns.Logging.Serilog;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Application.Pipelines.Logging
 {
-    public class LogginBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    //newtonsoft indirelecek unutma !!!!!..
+    public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
         where TRequest : IRequest<TResponse>
     {
         private readonly LoggerServiceBase _loggerServiceBase;
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public LogginBehavior(LoggerServiceBase loggerServiceBase,
+        public LoggingBehavior(LoggerServiceBase loggerServiceBase,
             IHttpContextAccessor contextAccessor)
         {
             _loggerServiceBase = loggerServiceBase;

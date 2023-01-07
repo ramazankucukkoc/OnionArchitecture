@@ -11,21 +11,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "projects", "projects", "{5B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stockFollow", "stockFollow", "{5DECE75A-8805-4E14-BBCC-C9FFA2A15C50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{B5303A7A-3D59-4CFD-B1A3-54DD300243A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{B5303A7A-3D59-4CFD-B1A3-54DD300243A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{3D39B0A5-597D-432F-92D2-2BB64729163D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{3D39B0A5-597D-432F-92D2-2BB64729163D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{7B2E37F5-2CE6-40DD-9A60-4E40402E7075}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{7B2E37F5-2CE6-40DD-9A60-4E40402E7075}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{3CD47EBB-9ABB-40D4-8A64-A84DCBE00E75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{3CD47EBB-9ABB-40D4-8A64-A84DCBE00E75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{BD1D0DBE-3E72-4C76-AE0F-E2A8FB763C8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "WebAPI\WebAPI.csproj", "{BD1D0DBE-3E72-4C76-AE0F-E2A8FB763C8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Persistence", "Core.Persistence\Core.Persistence.csproj", "{C8741542-D491-4A3A-9769-50C3C020E37A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Persistence", "Core.Persistence\Core.Persistence.csproj", "{C8741542-D491-4A3A-9769-50C3C020E37A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Application", "Core.Application\Core.Application.csproj", "{19E2249D-82FD-4BA8-9DA1-C11DD76EDC70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Application", "Core.Application\Core.Application.csproj", "{19E2249D-82FD-4BA8-9DA1-C11DD76EDC70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CrossCuttingConcerns", "Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj", "{A0B92A33-A33C-4F13-A5FF-8FDB51D31E98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.CrossCuttingConcerns", "Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj", "{A0B92A33-A33C-4F13-A5FF-8FDB51D31E98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Security", "Core.Security\Core.Security.csproj", "{060E1FE0-9E7B-484E-BC0E-DBA7A914B382}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{A0B92A33-A33C-4F13-A5FF-8FDB51D31E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0B92A33-A33C-4F13-A5FF-8FDB51D31E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0B92A33-A33C-4F13-A5FF-8FDB51D31E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{060E1FE0-9E7B-484E-BC0E-DBA7A914B382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{060E1FE0-9E7B-484E-BC0E-DBA7A914B382}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{060E1FE0-9E7B-484E-BC0E-DBA7A914B382}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{060E1FE0-9E7B-484E-BC0E-DBA7A914B382}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{C8741542-D491-4A3A-9769-50C3C020E37A} = {68FEEE3C-C380-40DA-BF20-D7BCE4617560}
 		{19E2249D-82FD-4BA8-9DA1-C11DD76EDC70} = {68FEEE3C-C380-40DA-BF20-D7BCE4617560}
 		{A0B92A33-A33C-4F13-A5FF-8FDB51D31E98} = {68FEEE3C-C380-40DA-BF20-D7BCE4617560}
+		{060E1FE0-9E7B-484E-BC0E-DBA7A914B382} = {68FEEE3C-C380-40DA-BF20-D7BCE4617560}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {63221256-A199-401B-B378-DA613B92F15B}

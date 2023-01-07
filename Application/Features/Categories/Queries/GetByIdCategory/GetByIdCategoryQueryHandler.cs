@@ -4,11 +4,6 @@ using Application.Features.Categories.Rules;
 using Application.Services.Repositories;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Categories.Queries.GetByIdCategory
 {
@@ -17,7 +12,7 @@ namespace Application.Features.Categories.Queries.GetByIdCategory
         private readonly ICategoryRepository _categoryRepository;
         private readonly CategoryBusinessRules _categoryBusinessRules;
 
-        public GetByIdCategoryQueryHandler(ICategoryRepository categoryRepository, 
+        public GetByIdCategoryQueryHandler(ICategoryRepository categoryRepository,
             CategoryBusinessRules categoryBusinessRules)
         {
             _categoryRepository = categoryRepository;
@@ -28,7 +23,7 @@ namespace Application.Features.Categories.Queries.GetByIdCategory
         {
             await _categoryBusinessRules.CategoryShouldExistsWhenRequested(request.Id);
             Category? category = await _categoryRepository.GetAsync(c => c.Id == request.Id);
-            CategoryGetByIdDto categoryGetByIdDto=LazyObjectMapper.Mapper.Map<CategoryGetByIdDto>(category);
+            CategoryGetByIdDto categoryGetByIdDto = LazyObjectMapper.Mapper.Map<CategoryGetByIdDto>(category);
             return categoryGetByIdDto;
 
         }

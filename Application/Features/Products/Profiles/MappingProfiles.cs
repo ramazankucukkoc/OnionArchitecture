@@ -5,15 +5,10 @@ using Application.Features.Products.Models;
 using AutoMapper;
 using Core.Persistence.Paging;
 using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Products.Profiles
 {
-    public class MappingProfiles:Profile
+    public class MappingProfiles : Profile
     {
         public MappingProfiles()
         {
@@ -21,7 +16,7 @@ namespace Application.Features.Products.Profiles
             CreateMap<Product, CreateProductCommand>().ReverseMap();
 
             CreateMap<Product, DeleteProductCommand>().ReverseMap();
-            CreateMap<Product, DeleteProductDto>().ReverseMap(); 
+            CreateMap<Product, DeleteProductDto>().ReverseMap();
 
             CreateMap<Product, UpdateProductDto>().ReverseMap();
             CreateMap<Product, UpdateProductCommand>().ReverseMap();
