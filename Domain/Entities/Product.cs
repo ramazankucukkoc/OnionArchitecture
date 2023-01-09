@@ -12,9 +12,9 @@ namespace Domain.Entities
         {
 
         }
-        public Product(int id,int categoryId,string name,string description):this()
+        public Product(int id, int categoryId, string name, string description) : this()
         {
-            Id=id;
+            Id = id;
             CategoryId = categoryId;
             Name = name;
             Description = description;

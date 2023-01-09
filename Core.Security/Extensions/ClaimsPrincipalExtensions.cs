@@ -10,9 +10,17 @@ namespace Core.Security.Extensions
             List<string>? result = claimsPrincipal?.FindAll(claimType)?.Select(x => x.Value).ToList();
             return result;
         }
-        public static List<string>? ClaimRoles(this ClaimsPrincipal claimsPrincipal) => claimsPrincipal?.Claims(ClaimTypes.Role);
+        public static List<string>? ClaimRoles(this ClaimsPrincipal claimsPrincipal)
+        {
+            return claimsPrincipal?.Claims(ClaimTypes.Role);
+        }
 
-        public static int GetUserId(this ClaimsPrincipal claimsPrincipal) => Convert.ToInt32(claimsPrincipal?.Claims(ClaimTypes.NameIdentifier)?.FirstOrDefault());
+        public static int GetUserId(this ClaimsPrincipal claimsPrincipal)
+        {
+
+            return Convert.ToInt32(claimsPrincipal?.Claims(ClaimTypes.NameIdentifier)?.FirstOrDefault());
+
+        }
 
     }
 }

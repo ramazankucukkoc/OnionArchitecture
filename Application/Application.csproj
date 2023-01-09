@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Auths\Commands\UserClaims\" />
     <Folder Include="Features\Categories\Constants\" />
   </ItemGroup>
 

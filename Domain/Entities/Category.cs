@@ -11,12 +11,12 @@ namespace Domain.Entities
         {
 
         }
-        public Category(int id,string name):this()
+        public Category(int id, string name) : this()
         {
 
             Id = id;
             Name = name;
-         
+
         }
 
     }

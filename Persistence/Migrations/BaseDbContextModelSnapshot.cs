@@ -182,11 +182,7 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("OperationClaimId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OperationClaimId1")
+                    b.Property<int>("OperationClaimId")
                         .HasColumnType("int");
 
                     b.Property<bool>("Status")
@@ -200,7 +196,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OperationClaimId1");
+                    b.HasIndex("OperationClaimId");
 
                     b.HasIndex("UserId");
 
@@ -245,20 +241,20 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Local),
                             Description = "Beyaz Eşyalar Kategorisi gösterişli.",
                             Name = "Beyaz Eşya",
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Local)
+                            UpdatedDate = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Local),
                             Description = "Kirtasiye Kategorisi kullanışlı.",
                             Name = "Kirtasiye",
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Local)
+                            UpdatedDate = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Local)
                         });
                 });
 
@@ -306,21 +302,21 @@ namespace Persistence.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Local),
                             Description = "Kullanışlı Doga Dostudur.",
                             Name = "Buzdolabı",
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Local)
+                            UpdatedDate = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            CreatedDate = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Local),
                             Description = "0.7 Uçlu kalem.",
                             Name = "Kalem",
                             Status = false,
-                            UpdatedDate = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Local)
+                            UpdatedDate = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Local)
                         });
                 });
 
@@ -339,7 +335,7 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Core.Security.Entitites.OperationClaim", "OperationClaim")
                         .WithMany()
-                        .HasForeignKey("OperationClaimId1")
+                        .HasForeignKey("OperationClaimId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

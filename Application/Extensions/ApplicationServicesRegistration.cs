@@ -2,6 +2,7 @@
 using Application.Features.Categories.Rules;
 using Application.Features.Products.Rules;
 using Application.Services.AuthService;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Validation;
 using Core.CrossCuttingConcerns.Logging.Serilog;
@@ -23,16 +24,18 @@ namespace Application.Extensions
             services.AddScoped<ProductBusinessRules>();
             services.AddScoped<CategoryBusinessRules>();
             services.AddScoped<AuthBusinessRules>();
-            
-            
-        //    services.AddScoped<FileLogger>();
+
+
+                services.AddTransient<FileLogger>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
 
             services.AddSingleton<LoggerServiceBase, FileLogger>();
-            //services.AddSingleton<LoggerServiceBase, MsSqlLogger>();
+          
             services.AddScoped<IAuthService, AuthManager>();
             return services;
         }

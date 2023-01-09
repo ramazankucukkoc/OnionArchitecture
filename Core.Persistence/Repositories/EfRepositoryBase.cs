@@ -62,9 +62,9 @@ namespace Core.Persistence.Repositories
 
         }
 
-        public  Task<int> SaveChangesAsync()
+        public Task<int> SaveChangesAsync()
         {
-            return  Context.SaveChangesAsync();
+            return Context.SaveChangesAsync();
         }
     }
 }

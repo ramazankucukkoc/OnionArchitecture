@@ -1,7 +1,6 @@
 using Application.Extensions;
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.Security;
-using Core.Security.Encryption;
 using Core.Security.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -11,6 +10,12 @@ using Persistence.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000"));
+});
+
 
 builder.Services.AddControllers();
 
@@ -18,6 +23,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSecurityService();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
@@ -72,7 +78,11 @@ if (app.Environment.IsDevelopment())
 if (app.Environment.IsProduction())
     app.UseCustomExcepitonMiddleware();
 
+app.UseCors("AllowOrigin");
+
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

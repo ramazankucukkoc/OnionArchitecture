@@ -56,8 +56,8 @@ namespace Core.Security.JWT
                                                        IList<OperationClaim> operationClaims)
         {
             JwtSecurityToken jwt = new(
-                tokenOptions.Issuer,
-                tokenOptions.Audience,
+              issuer: tokenOptions.Issuer,
+               audience: tokenOptions.Audience,
                 expires: _accessTokenExpiration,
                 notBefore: DateTime.Now,
                 claims: SetClaims(user, operationClaims),

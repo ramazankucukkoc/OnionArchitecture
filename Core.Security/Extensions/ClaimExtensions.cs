@@ -15,7 +15,7 @@ namespace Core.Security.Extensions
         }
         public static void AddNameIdentifier(this ICollection<Claim> claims, string nameIdentitifier)
         {
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, nameIdentitifier));
+            claims.Add(new Claim(ClaimTypes.SerialNumber, nameIdentitifier));
         }
         public static void AddRoles(this ICollection<Claim> claims, string[] roles)
         {

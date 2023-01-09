@@ -17,5 +17,10 @@ namespace Application.Features.Auths.Rules
             User? user = await _userRepository.GetAsync(u => u.Email == email);
             if (user != null) throw new BusinessException("Email already exists");
         }
+        public async Task EmailIsExists(string email)
+        {
+            User? user = await _userRepository.GetAsync(u => u.Email == email);
+            if (user == null) throw new BusinessException("Email should be  registedered. Threre is not email system");
+        }
     }
 }

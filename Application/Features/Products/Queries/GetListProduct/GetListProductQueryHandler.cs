@@ -5,6 +5,7 @@ using AutoMapper;
 using Core.Persistence.Paging;
 using Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Products.Queries.GetListProduct
 {
@@ -24,7 +25,9 @@ namespace Application.Features.Products.Queries.GetListProduct
 
         public async Task<ProductListModel> Handle(GetListProductQuery request, CancellationToken cancellationToken)
         {
-            IPaginate<Product> products = await _productRepository.GetListAsync(predicate: c => c.Status != true, index: request.PageRequest.Page, size: request.PageRequest.PageSize);
+            IPaginate<Product> products = await _productRepository.GetListAsync(predicate: c => c.Status != true,
+                include:x=>x.Include(p=>p.Category),
+                index: request.PageRequest.Page, size: request.PageRequest.PageSize);
 
             ProductListModel mappedProductListModel = _mapper.Map<ProductListModel>(products);
             return mappedProductListModel;

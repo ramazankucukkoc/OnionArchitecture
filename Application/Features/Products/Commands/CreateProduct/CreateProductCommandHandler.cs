@@ -3,6 +3,7 @@ using Application.Features.Products.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.CrossCuttingConcerns.Logging.Serilog;
+using Core.CrossCuttingConcerns.Logging.Serilog.Logger;
 using Domain.Entities;
 using MediatR;
 
@@ -13,10 +14,10 @@ namespace Application.Features.Products.Commands.CreateProduct
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
         private readonly ProductBusinessRules _productBusinessRules;
-        private readonly LoggerServiceBase _logger;
+        private readonly FileLogger _logger;
 
         public CreateProductCommandHandler(IProductRepository productRepository, IMapper mapper, ProductBusinessRules productBusinessRules
-             , LoggerServiceBase logger)
+             , FileLogger logger)
         {
             _productRepository = productRepository;
             _mapper = mapper;

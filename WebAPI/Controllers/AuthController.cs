@@ -1,4 +1,4 @@
-﻿using Application.Features.Auths.Commands.OperationClaims;
+﻿using Application.Features.Auths.Commands.Login;
 using Application.Features.Auths.Commands.Register;
 using Application.Features.Auths.Dtos;
 using Core.Security.Dtos;
@@ -18,11 +18,14 @@ namespace WebAPI.Controllers
             RegisteredDto registered = await Mediator.Send(registerCommand);
             return Created("", registered.AccessToken);
         }
-        [HttpPost("OperationClaimAdd")]
-        public async Task<IActionResult> OperationClaimAdd([FromBody] CreateOperationClaimCommand createOperationClaimCommand )
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] UserForLoginDto userForLoginDto)
         {
-            CreateOperationClaimDto createOperationClaimDto = await Mediator.Send(createOperationClaimCommand);
-            return Created("",createOperationClaimDto);
+            LoginCommand loginCommand = new()
+            { UserForLoginDto = userForLoginDto, IpAddress = GetByIpAddress() };
+
+            LoginDto loginDto = await Mediator.Send(loginCommand);
+            return Ok(loginDto);
         }
 
 
